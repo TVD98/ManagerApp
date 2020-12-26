@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "996603898729",
+    "firebase_url": "https://mymagicapp-93713.firebaseio.com",
+    "project_id": "mymagicapp-93713",
+    "storage_bucket": "mymagicapp-93713.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996603898729:android:642c8155306a671c2aebf8",
+        "android_client_info": {
+          "package_name": "com.example.managerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "996603898729-nk81eik8rkjt2rg42l20i7n8a35eutc7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrwsLTq-QhJ_W7JTEeSBjrIgj4xn7mMlI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "996603898729-nk81eik8rkjt2rg42l20i7n8a35eutc7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996603898729:android:c29cbf63ba0ec52f2aebf8",
+        "android_client_info": {
+          "package_name": "com.example.mymagicapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "996603898729-nk81eik8rkjt2rg42l20i7n8a35eutc7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrwsLTq-QhJ_W7JTEeSBjrIgj4xn7mMlI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "996603898729-nk81eik8rkjt2rg42l20i7n8a35eutc7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
