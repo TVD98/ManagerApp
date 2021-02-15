@@ -1,15 +1,19 @@
 package com.example.managerapp.models;
 
+import androidx.annotation.NonNull;
+
 import com.example.managerapp.helper.Constraints;
 import com.example.managerapp.helper.Utility;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Code implements Comparable<Code> {
     private String id;
     private String userName;
     private int usedCount;
     private String date;
+    private String dateCreated;
 
     public Code(){
 
@@ -19,7 +23,8 @@ public class Code implements Comparable<Code> {
         this.id = id;
         this.userName = "";
         this.usedCount = 0;
-        this.date = Utility.localDateTimeToString(LocalDateTime.now().plusHours(-7));
+        this.dateCreated = Utility.localDateTimeToString(LocalDateTime.now().plusHours(-7));
+        this.date = "";
     }
 
     public String getDate() {
@@ -54,11 +59,12 @@ public class Code implements Comparable<Code> {
         this.usedCount = usedCount;
     }
 
-    public String getState(){
-        if(usedCount == 0){
-            return "Ready";
-        }
-        return "Used";
+    public String getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(String dateCreated) {
+        this.dateCreated = dateCreated;
     }
 
     public boolean isReady(){
@@ -78,12 +84,23 @@ public class Code implements Comparable<Code> {
     @Override
     public int compareTo(Code o) {
         if(usedCount == o.getUsedCount()){
-            if(Integer.parseInt(date) < Integer.parseInt(o.date))
+            if(Integer.parseInt(dateCreated) < Integer.parseInt(o.dateCreated))
                 return 1;
             return -1;
         }
         else if(usedCount < o.getUsedCount())
             return -1;
         return 1;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        String message = String.format("Code: '%s'\nDate created: %s\nUser: '%s'\nDate used:%s",
+                getId(),
+                Utility.secondsToLocalDateTimeFormat(getDateCreated()),
+                getUserName(),
+                Utility.secondsToLocalDateTimeFormat(getDate()));
+        return  message;
     }
 }

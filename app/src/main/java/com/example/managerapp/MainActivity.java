@@ -19,7 +19,6 @@ import com.google.firebase.database.ValueEventListener;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.solver.state.State;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,7 +28,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -65,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         ItemClickSupport.addTo(recyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                Toast.makeText(MainActivity.this, "click", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -99,9 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showDialogDetailsOfCode(int position){
         Code code = codes.get(position);
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-        String message = String.format("Code: %s\nDate : %s\nUser : %s",
-                code.getId(), Utility.secondsToLocalDateTime(code.getDate()).format(format), code.getUserName());
+        String message = code.toString();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message);
         builder.setPositiveButton("Ok", new Dialog.OnClickListener() {
@@ -148,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showDialogToAddCode() {
         String code = Utility.randomString();
-        String message = String.format("Add code %s?", code);
+        String message = String.format("Add code '%s'?", code);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message);
         builder.setPositiveButton("Yes", new Dialog.OnClickListener() {

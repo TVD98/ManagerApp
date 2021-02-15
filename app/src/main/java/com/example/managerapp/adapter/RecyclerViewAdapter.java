@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Code code = codes.get(position);
         holder.textId.setText(code.getId());
         holder.textName.setText(code.getUserName());
-        holder.textTimeUseCount.setText(code.getState());
+        if(code.isReady()){
+            holder.textTimeUseCount.setText("Ready");
+            holder.textTimeUseCount.setTextColor(Color.GREEN);
+        }
+        else{
+            holder.textTimeUseCount.setText("Used");
+            holder.textTimeUseCount.setTextColor(Color.GRAY);
+        }
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +61,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     private void showDialogToDelete(int position) {
-        String message = String.format("Delete code %s?", codes.get(position).getId());
+        String message = String.format("Delete code '%s'?", codes.get(position).getId());
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage(message);
         builder.setPositiveButton("Yes", new Dialog.OnClickListener() {
