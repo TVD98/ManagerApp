@@ -86,7 +86,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     private void removeCode(int position) {
-        FirebaseSingleton.getInstance().deleteCode(codes.get(position).getId());
+        FirebaseSingleton.getInstance().removeCode(codes.get(position).getId());
         Toast.makeText(context, "Delete successfully", Toast.LENGTH_SHORT).show();
     }
 

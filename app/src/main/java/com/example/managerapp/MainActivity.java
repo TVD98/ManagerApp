@@ -26,7 +26,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void showDialogDetailsOfCode(int position){
+    private void showDialogDetailsOfCode(int position) {
         Code code = codes.get(position);
         String message = code.toString();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -134,12 +133,15 @@ public class MainActivity extends AppCompatActivity {
                 setTypeCode(Constraints.USED_CODE);
                 break;
         }
-        filterCodeList();
         return super.onOptionsItemSelected(item);
     }
 
     private void setTypeCode(int type) {
-        typeCode = type;
+        if (type != typeCode) {
+            typeCode = type;
+            filterCodeList();
+        }
+
     }
 
     private void showDialogToAddCode() {
@@ -167,14 +169,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addCode(String codeId) {
-        FirebaseSingleton.getInstance().addNewCode(codeId);
+        FirebaseSingleton.getInstance().addCode(codeId);
     }
 
-    private void filterCodeList(){
+    private void filterCodeList() {
         codes.clear();
-        for (Code code: codesTemp
-             ) {
-            if(code.isCorrectOnType(typeCode))
+        for (Code code : codesTemp
+        ) {
+            if (code.isCorrectOnType(typeCode))
                 codes.add(code);
         }
         updateUI();
