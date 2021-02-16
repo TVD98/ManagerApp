@@ -35,7 +35,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View v = inflater.inflate(R.layout.item_user, parent, false);
+        View v = inflater.inflate(R.layout.item_code, parent, false);
         return new RecyclerViewHolder(v);
     }
 
@@ -45,23 +45,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.textId.setText(code.getId());
         holder.textName.setText(code.getUserName());
         if(code.isReady()){
-            holder.textTimeUseCount.setText("Ready");
-            holder.textTimeUseCount.setTextColor(Color.GREEN);
+            holder.text_state.setText("Ready");
+            holder.text_state.setTextColor(Color.GREEN);
         }
         else{
-            holder.textTimeUseCount.setText("Used");
-            holder.textTimeUseCount.setTextColor(Color.GRAY);
+            holder.text_state.setText("Used");
+            holder.text_state.setTextColor(Color.GRAY);
         }
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialogToDelete(position);
+                showDialogToRemove(position);
             }
         });
     }
 
-    private void showDialogToDelete(int position) {
-        String message = String.format("Delete code '%s'?", codes.get(position).getId());
+    private void showDialogToRemove(int position) {
+        String message = String.format("Remove code '%s'?", codes.get(position).getId());
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage(message);
         builder.setPositiveButton("Yes", new Dialog.OnClickListener() {
@@ -86,8 +86,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     private void removeCode(int position) {
-        FirebaseSingleton.getInstance().removeCode(codes.get(position).getId());
-        Toast.makeText(context, "Delete successfully", Toast.LENGTH_SHORT).show();
+        String codeId = codes.get(position).getId();
+        FirebaseSingleton.getInstance().removeCode(codeId);
+        Toast.makeText(context, "Remove successfully", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -98,16 +99,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         public TextView textId;
         public TextView textName;
-        public TextView textTimeUseCount;
+        public TextView text_state;
         public ImageButton delete;
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            textId = itemView.findViewById(R.id.text_code);
+            textId = itemView.findViewById(R.id.text_code_id);
             textName = itemView.findViewById(R.id.text_user_name);
-            textTimeUseCount = itemView.findViewById(R.id.text_state);
-            delete = itemView.findViewById(R.id.image_button_delete);
+            text_state = itemView.findViewById(R.id.text_state);
+            delete = itemView.findViewById(R.id.image_button_remove);
         }
     }
 

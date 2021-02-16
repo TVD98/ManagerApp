@@ -56,8 +56,8 @@ public class Code implements Comparable<Code> {
 
     public boolean isReady(){
         if(userName.isEmpty())
-            return false;
-        return true;
+            return true;
+        return false;
     }
 
     public boolean isCorrectOnType(int type){
@@ -76,8 +76,8 @@ public class Code implements Comparable<Code> {
             return -1;
         }
         else if(isReady() && !other.isReady())
-            return 1;
-        return -1;
+            return -1;
+        return 1;
     }
 
     @NonNull

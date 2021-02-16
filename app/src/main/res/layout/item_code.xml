@@ -12,7 +12,7 @@
         android:background="@color/cardview_light_background">
 
         <ImageButton
-            android:id="@+id/image_button_delete"
+            android:id="@+id/image_button_remove"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:background="@drawable/delete"
@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text_code"
+            android:id="@+id/text_code_id"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="123456"
@@ -30,7 +30,7 @@
             android:textIsSelectable="true"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/image_button_delete"
+            app:layout_constraintStart_toEndOf="@id/image_button_remove"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
